@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business Reports &amp; Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4A90E2",
+              "background-light": "#F8F9FA",
+              "background-dark": "#101820",
+              "text-primary-light": "#333333",
+              "text-secondary-light": "#6c757d",
+              "text-primary-dark": "#F8F9FA",
+              "text-secondary-dark": "#a0aec0",
+              "container-light": "#FFFFFF",
+              "container-dark": "#1A2938",
+              "border-light": "#e2e8f0",
+              "border-dark": "#344a5f"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="flex flex-col w-64 bg-container-light dark:bg-container-dark border-r border-border-light dark:border-border-dark p-4 shrink-0">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Company logo for Metronix Inc." style='background-image: url("https://cdn.rri.co.id/berita/Bogor/o/1724152335421-images_(2)/f4lbrco96ts398f.jpeg");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-normal">Bydeflowers</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">Admin Account</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="http://127.0.0.1:5500/dashboard_(halaman_utama)/code.html#">
+<span class="material-symbols-outlined text-xl" >dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="http://127.0.0.1:5500/data_pesanan/code.html">
+<span class="material-symbols-outlined text-xl"style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<p class="text-sm font-bold leading-normal">Orders</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="http://127.0.0.1:5500/manajemen_produk/code.html">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<p class="text-sm font-medium leading-normal">Products</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="http://127.0.0.1:5500/manajemen_stok/code.html">
+<span class="material-symbols-outlined text-xl">archive</span>
+<p class="text-sm font-medium leading-normal">Stock</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="http://127.0.0.1:5500/pengeluaran/code.html">
+<span class="material-symbols-outlined text-xl">paid</span>
+<p class="text-sm font-medium leading-normal">Expenses</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="http://127.0.0.1:5500/laporan/code.html">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<p class="text-sm font-medium leading-normal">Support</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<p class="text-sm font-medium leading-normal">Logout</p>
+
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-8 overflow-y-auto">
+<div class="max-w-7xl mx-auto">
+<!-- Banner -->
+<div class="w-full h-64 rounded-xl bg-cover bg-center shadow mb-8"
+style="background-image: url('https://png.pngtree.com/background/20250422/original/pngtree-romantic-pink-and-red-flower-bouquet---background-picture-image_16378103.jpg');"></div>
+
+
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="p-6 bg-white rounded-xl shadow">
+<p class="text-gray-500">Total Orders</p>
+<h2 class="text-3xl font-bold">128</h2>
+</div>
+<div class="p-6 bg-white rounded-xl shadow">
+<p class="text-gray-500">Products</p>
+<h2 class="text-3xl font-bold">42</h2>
+</div>
+<div class="p-6 bg-white rounded-xl shadow">
+<p class="text-gray-500">Monthly Income</p>
+<h2 class="text-3xl font-bold">Rp 12.430.000</h2>
+</div>
+<div class="p-6 bg-white rounded-xl shadow">
+<p class="text-gray-500">Pending Orders</p>
+<h2 class="text-3xl font-bold">6</h2>
+</div>
+</div>
+
+
+<!-- Latest Orders -->
+<div class="bg-white p-6 rounded-xl shadow mb-8">
+<h3 class="text-xl font-bold mb-4">Latest Orders</h3>
+<table class="w-full text-left">
+<thead>
+<tr class="border-b">
+<th class="py-2">Customer</th>
+<th>Product</th>
+<th>Status</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b">
+<td class="py-3">Ayu</td>
+<td>Pink Daisy Bouquet</td>
+<td><span class="text-green-600 font-semibold">Completed</span></td>
+<td>Rp 120.000</td>
+</tr>
+<tr class="border-b">
+<td class="py-3">Dela</td>
+<td>Rose Pastel</td>
+<td><span class="text-yellow-500 font-semibold">Pending</span></td>
+<td>Rp 150.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</main>
+</div>
+</body>
+</html>
