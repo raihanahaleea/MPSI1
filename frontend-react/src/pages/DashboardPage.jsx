@@ -1,12 +1,22 @@
 import React from 'react'
 
-function DashboardPage() {
+function DashboardPage({ summary, loading, error }) {
+  const totalOrders = summary?.totalOrders || 0
+  const completedOrders = summary?.completedOrders || 0
+  const pendingOrders = summary?.pendingOrders || 0
+  const cancelledOrders = summary?.cancelledOrders || 0
+  const revenue = summary?.revenue || 0
+
+  const revenueDisplay = revenue
+    ? revenue.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 })
+    : 'Rp 0'
+
   return (
     <div className="max-w-7xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
         <div>
           <h1 className="text-3xl font-bold text-text-primary-light dark:text-text-primary-dark">
-            Welcome back, Della 👋
+            Welcome back, Admin 👋
           </h1>
           <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mt-1">
             Ringkasan performa toko Bydeflowers hari ini.
@@ -24,22 +34,24 @@ function DashboardPage() {
           <p className="text-xs font-medium text-text-secondary-light uppercase tracking-wide">
             Orders Today
           </p>
-          <h2 className="text-2xl font-bold mt-2">24</h2>
-          <p className="text-xs text-green-600 mt-1">+8 vs kemarin</p>
+          <h2 className="text-2xl font-bold mt-2">{totalOrders}</h2>
+          <p className="text-xs text-text-secondary-light mt-1">
+            {loading ? 'Memuat data...' : 'Ringkasan berdasarkan semua pesanan.'}
+          </p>
         </div>
         <div className="p-4 bg-white dark:bg-container-dark rounded-xl shadow">
           <p className="text-xs font-medium text-text-secondary-light uppercase tracking-wide">
             This Week
           </p>
-          <h2 className="text-2xl font-bold mt-2">128</h2>
-          <p className="text-xs text-green-600 mt-1">+12% vs minggu lalu</p>
+          <h2 className="text-2xl font-bold mt-2">{completedOrders}</h2>
+          <p className="text-xs text-text-secondary-light mt-1">Total completed orders.</p>
         </div>
         <div className="p-4 bg-white dark:bg-container-dark rounded-xl shadow">
           <p className="text-xs font-medium text-text-secondary-light uppercase tracking-wide">
             This Month Revenue
           </p>
-          <h2 className="text-2xl font-bold mt-2">Rp 12.450.000</h2>
-          <p className="text-xs text-green-600 mt-1">+5% vs bulan lalu</p>
+          <h2 className="text-2xl font-bold mt-2">{revenueDisplay}</h2>
+          <p className="text-xs text-text-secondary-light mt-1">Total revenue dari completed orders.</p>
         </div>
         <div className="p-4 bg-white dark:bg-container-dark rounded-xl shadow">
           <p className="text-xs font-medium text-text-secondary-light uppercase tracking-wide">
@@ -49,6 +61,16 @@ function DashboardPage() {
           <p className="text-xs text-text-secondary-light mt-1">3 stok menipis</p>
         </div>
       </div>
+      {pendingOrders > 0 && (
+        <div className="flex items-center gap-2 text-xs md:text-sm text-yellow-700 bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3">
+          <span className="material-symbols-outlined text-base md:text-lg">warning</span>
+          <p>
+            Ada{' '}
+            <span className="font-semibold">{pendingOrders} pending orders</span> yang perlu segera di-review dan
+            di-complete agar tidak menumpuk.
+          </p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         <div className="lg:col-span-2 bg-white dark:bg-container-dark rounded-xl shadow p-5">
@@ -115,15 +137,15 @@ function DashboardPage() {
           <ul className="space-y-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
             <li>
               <span className="inline-block w-3 h-3 rounded-full bg-green-400 mr-2"></span>
-              18 pesanan sudah selesai hari ini.
+              {completedOrders} pesanan sudah selesai.
             </li>
             <li>
               <span className="inline-block w-3 h-3 rounded-full bg-yellow-400 mr-2"></span>
-              4 pesanan masih dalam proses pengiriman.
+              {pendingOrders} pesanan masih menunggu diproses.
             </li>
             <li>
               <span className="inline-block w-3 h-3 rounded-full bg-red-400 mr-2"></span>
-              2 pesanan dibatalkan oleh pelanggan.
+              {cancelledOrders} pesanan dibatalkan oleh pelanggan.
             </li>
           </ul>
         </div>

@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { id: 'settings', label: 'Settings', icon: 'settings' },
 ]
 
-function Sidebar({ currentPage, onChangePage }) {
+function Sidebar({ currentPage, onChangePage, pendingOrdersCount = 0 }) {
   return (
     <aside className="flex flex-col w-64 bg-container-light dark:bg-container-dark border-r border-border-light dark:border-border-dark p-4 shrink-0">
       <button
@@ -39,40 +39,40 @@ function Sidebar({ currentPage, onChangePage }) {
       <nav className="flex flex-col gap-2">
         {NAV_ITEMS.map((item) => {
           const isActive = currentPage === item.id
+          const isOrders = item.id === 'orders'
           return (
             <button
               key={item.id}
               type="button"
               onClick={() => onChangePage(item.id)}
-              className={`flex items-center gap-3 px-3 py-2 rounded text-left transition ${
+              className={`flex items-center justify-between gap-3 px-3 py-2 rounded text-left transition ${
                 isActive
                   ? 'bg-primary/10 text-primary'
                   : 'text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10'
               }`}
             >
-              <span
-                className="material-symbols-outlined text-xl"
-                style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
-              >
-                {item.icon}
+              <span className="flex items-center gap-3">
+                <span
+                  className="material-symbols-outlined text-xl"
+                  style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
+                >
+                  {item.icon}
+                </span>
+                <p className={`text-sm font-medium leading-normal ${isActive ? 'font-bold' : ''}`}>
+                  {item.label}
+                </p>
               </span>
-              <p className={`text-sm font-medium leading-normal ${isActive ? 'font-bold' : ''}`}>
-                {item.label}
-              </p>
+              {isOrders && pendingOrdersCount > 0 && (
+                <span className="inline-flex items-center justify-center min-w-5 h-5 text-[11px] rounded-full bg-yellow-400 text-white font-semibold">
+                  {pendingOrdersCount}
+                </span>
+              )}
             </button>
           )
         })}
       </nav>
 
       <div className="mt-auto flex flex-col gap-2">
-        <button
-          type="button"
-          onClick={() => onChangePage('support')}
-          className="flex items-center gap-3 px-3 py-2 rounded text-left text-text-primary-light dark:text-text-primary-dark hover:bg-primary/10"
-        >
-          <span className="material-symbols-outlined text-xl">help</span>
-          <p className="text-sm font-medium leading-normal">Support</p>
-        </button>
         <button
           type="button"
           onClick={() => onChangePage('logout')}
